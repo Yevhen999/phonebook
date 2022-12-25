@@ -1,0 +1,57 @@
+.phonebookWrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+.labelWrapper {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 10px;
+}
+
+.formIcon {
+  fill: tomato;
+}
+
+.formLabel {
+  display: block;
+}
+
+.formInput,
+.formInputName {
+  margin-top: 10px;
+  display: block;
+  border-radius: 3px;
+}
+
+.formInputName {
+  text-transform: capitalize;
+}
+
+.formInput:focus-within,
+.formInputName:focus-within {
+  outline-color: tomato;
+  transform: scale(1.1);
+}
+
+.btnSubmit {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: block;
+  border-radius: 5px;
+  border-color: black;
+  background-color: tomato;
+  color: yellow;
+}
+
+.btnSubmit:hover {
+  transform: scale(1.05);
+}
+
+.contactItem {
+  margin-top: 10px;
+}
