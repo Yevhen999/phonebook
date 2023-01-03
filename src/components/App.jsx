@@ -27,41 +27,9 @@ export const App = () => {
   //   ]
   // );
 
-  // const [filter, setFilter] = useState('');
-
   // useEffect(() => {
   //   localStorage.setItem('contacts', JSON.stringify(contacts));
   // }, [contacts]);
-
-  // const formSubmitHandler = data => {
-  //   const { name, number } = data;
-  //   for (const contact of contacts) {
-  //     if (name.toLowerCase() === contact.name.toLowerCase()) {
-  //       alert(`${name} is already in contacts`);
-  //       return;
-  //     }
-  //   }
-
-  //   const newContact = {
-  //     id: nanoid(5),
-  //     name,
-  //     number,
-  //   };
-
-  //   setContacts([newContact, ...contacts]);
-  // };
-
-  // const changeFilter = event => {
-  //   setFilter(event.currentTarget.value);
-  // };
-
-  // const deleteContact = contactId => {
-  //   setContacts(
-  //     contacts.filter(contact => {
-  //       return contact.id !== contactId;
-  //     })
-  //   );
-  // };
 
   return (
     <div

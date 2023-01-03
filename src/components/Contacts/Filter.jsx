@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { changeFilter } from 'redux/store';
 
@@ -30,7 +30,6 @@ export const Filter = ({ filter }) => {
   );
 };
 
-// Filter.propTypes = {
-//   filter: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-// };
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+};
