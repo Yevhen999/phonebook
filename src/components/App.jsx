@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ContactsList from './Contacts/ContactsList';
 import { FormData } from './Contacts/FormData';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 import { Filter } from './Contacts/Filter';
 import { RiGameFill } from 'react-icons/ri';
 import css from './Contacts/Contacts.module.css';
@@ -17,7 +17,7 @@ export const App = () => {
   //   ]
   // );
 
-  const user = useSelector(state => state.contacts);
+  const user = useSelector(state => state.contacts.contacts);
   console.log(user);
 
   const [filter, setFilter] = useState('');
