@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { GiRotaryPhone } from 'react-icons/gi';
 import { HiUserCircle, HiUserAdd } from 'react-icons/hi';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from './Contacts.module.css';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';

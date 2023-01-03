@@ -1,4 +1,4 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import ContactsList from './Contacts/ContactsList';
 import { FormData } from './Contacts/FormData';
 // import { nanoid } from 'nanoid';
@@ -20,7 +20,10 @@ export const App = () => {
   const user = useSelector(state => state.contacts.contacts);
   console.log(user);
 
-  const [filter, setFilter] = useState('');
+  const filterContacts = useSelector(state => state.filter.filter);
+  console.log(filterContacts);
+
+  // const [filter, setFilter] = useState('');
 
   // useEffect(() => {
   //   localStorage.setItem('contacts', JSON.stringify(contacts));
@@ -52,9 +55,9 @@ export const App = () => {
   //   setContacts([newContact, ...contacts]);
   // };
 
-  const changeFilter = event => {
-    setFilter(event.currentTarget.value);
-  };
+  // const changeFilter = event => {
+  //   setFilter(event.currentTarget.value);
+  // };
 
   // const deleteContact = contactId => {
   //   setContacts(
@@ -100,7 +103,7 @@ export const App = () => {
         </h1>
         {user.length > 0 ? (
           <>
-            <Filter filter={filter} onChange={changeFilter} />
+            <Filter filter={filterContacts} />
             <ContactsList items={user} />
           </>
         ) : (

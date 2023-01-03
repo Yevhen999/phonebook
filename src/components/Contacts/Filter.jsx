@@ -1,9 +1,14 @@
 import { nanoid } from 'nanoid';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { changeFilter } from 'redux/store';
 
 const filterId = nanoid(5);
 
-export const Filter = ({ filter, onChange }) => {
+export const Filter = ({ filter }) => {
+  const dispatch = useDispatch();
+  const onChangeFilter = e => dispatch(changeFilter(e.target.value));
+
   return (
     <>
       <label
@@ -19,13 +24,13 @@ export const Filter = ({ filter, onChange }) => {
         placeholder="🔍"
         id={filterId}
         value={filter}
-        onChange={onChange}
+        onChange={onChangeFilter}
       />
     </>
   );
 };
 
-Filter.propTypes = {
-  filter: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
+// Filter.propTypes = {
+//   filter: PropTypes.string.isRequired,
+//   onChange: PropTypes.func.isRequired,
+// };
