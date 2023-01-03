@@ -5,6 +5,8 @@ import { HiUserCircle, HiUserAdd } from 'react-icons/hi';
 import PropTypes from 'prop-types';
 import css from './Contacts.module.css';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/store';
 
 const schema = yup.object().shape({
   name: yup.string().min(2, 'Too short').required('❌'),
@@ -12,6 +14,8 @@ const schema = yup.object().shape({
 });
 
 export const FormData = ({ onFormSubmit }) => {
+  const dispatch = useDispatch();
+
   const nameInputId = nanoid(5);
   const numberInputId = nanoid(5);
 
@@ -21,6 +25,8 @@ export const FormData = ({ onFormSubmit }) => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+    dispatch(addContact(values));
     onFormSubmit(values);
     resetForm();
   };
