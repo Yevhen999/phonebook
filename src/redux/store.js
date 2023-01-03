@@ -1,14 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createAction, createReducer } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialContacts = [];
+const contactsSlice = createSlice({
+  name: 'contacts',
+  initialState: [],
+  reducers: {
+    addContact(state, action) {
+      state.push(action.payload);
+    },
+  },
+});
 
-export const contactsReducer = (state = initialContacts, action) => {
-  // code
-};
+console.log(contactsSlice);
+
+export const { addContact } = contactsSlice.actions;
 
 export const store = configureStore({
   reducer: {
-    contacts: contactsReducer,
+    contacts: contactsSlice.reducer,
   },
 });
