@@ -1,13 +1,23 @@
 // import { useState } from 'react';
 import ContactsList from './Contacts/ContactsList';
 import { FormData } from './Contacts/FormData';
-// import { nanoid } from 'nanoid';
 import { Filter } from './Contacts/Filter';
 import { RiGameFill } from 'react-icons/ri';
 import css from './Contacts/Contacts.module.css';
 import { useSelector } from 'react-redux';
 
 export const App = () => {
+  const contacts = useSelector(state => state.contacts.contacts);
+  const filterContacts = useSelector(state => state.filter.filter);
+
+  const getVisibleContacts = () => {
+    const normalizedFilter = filterContacts.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+  const visibleContacts = getVisibleContacts();
+
   // const [contacts, setContacts] = useState(
   //   JSON.parse(localStorage.getItem('contacts')) ?? [
   //     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -17,25 +27,11 @@ export const App = () => {
   //   ]
   // );
 
-  const user = useSelector(state => state.contacts.contacts);
-  console.log(user);
-
-  const filterContacts = useSelector(state => state.filter.filter);
-  console.log(filterContacts);
-
   // const [filter, setFilter] = useState('');
 
   // useEffect(() => {
   //   localStorage.setItem('contacts', JSON.stringify(contacts));
   // }, [contacts]);
-
-  // const getVisibleContacts = () => {
-  //   const normalizedFilter = filter.toLowerCase();
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
-  // const visibleContacts = getVisibleContacts();
 
   // const formSubmitHandler = data => {
   //   const { name, number } = data;
@@ -101,10 +97,10 @@ export const App = () => {
         >
           📃Contacts
         </h1>
-        {user.length > 0 ? (
+        {contacts.length > 0 ? (
           <>
             <Filter filter={filterContacts} />
-            <ContactsList items={user} />
+            <ContactsList items={visibleContacts} />
           </>
         ) : (
           <p>There are no contacts</p>

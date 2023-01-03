@@ -20,6 +20,12 @@ const filterSlice = createSlice({
         state.filter = action.payload;
       },
     },
+    // getVisibleContacts(state, action) {
+    //   const normalizedFilter = state.filter.toLowerCase();
+    //   return state.contacts.filter(contact =>
+    //     contact.name.toLowerCase().includes(normalizedFilter)
+    //   );
+    // },
   },
 });
 
