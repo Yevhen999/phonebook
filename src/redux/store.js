@@ -1,19 +1,34 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, nanoid } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: [],
   reducers: {
-    addContact(state, action) {
-      state.push(action.payload);
+    addContact: {
+      reducer(state, action) {
+        state.push(action.payload);
+      },
+      prepare(text) {
+        return {
+          payload: {
+            text,
+            id: nanoid(5),
+          },
+        };
+      },
+    },
+    deleteContact(state, action) {
+      console.log(state);
+      console.log(action.payload);
+
+      const index = state.findIndex(task => task.id === action.payload);
+      state.splice(index, 1);
     },
   },
 });
 
-console.log(contactsSlice);
-
-export const { addContact } = contactsSlice.actions;
+export const { addContact, deleteContact } = contactsSlice.actions;
 
 export const store = configureStore({
   reducer: {

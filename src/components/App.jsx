@@ -1,64 +1,68 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import ContactsList from './Contacts/ContactsList';
 import { FormData } from './Contacts/FormData';
 import { nanoid } from 'nanoid';
 import { Filter } from './Contacts/Filter';
 import { RiGameFill } from 'react-icons/ri';
 import css from './Contacts/Contacts.module.css';
+import { useSelector } from 'react-redux';
 
 export const App = () => {
-  const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem('contacts')) ?? [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ]
-  );
+  // const [contacts, setContacts] = useState(
+  //   JSON.parse(localStorage.getItem('contacts')) ?? [
+  //     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+  //     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+  //     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+  //     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+  //   ]
+  // );
+
+  const user = useSelector(state => state.contacts);
+  console.log(user);
 
   const [filter, setFilter] = useState('');
 
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // useEffect(() => {
+  //   localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
-  const visibleContacts = getVisibleContacts();
+  // const getVisibleContacts = () => {
+  //   const normalizedFilter = filter.toLowerCase();
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
+  // const visibleContacts = getVisibleContacts();
 
-  const formSubmitHandler = data => {
-    const { name, number } = data;
-    for (const contact of contacts) {
-      if (name.toLowerCase() === contact.name.toLowerCase()) {
-        alert(`${name} is already in contacts`);
-        return;
-      }
-    }
+  // const formSubmitHandler = data => {
+  //   const { name, number } = data;
+  //   for (const contact of contacts) {
+  //     if (name.toLowerCase() === contact.name.toLowerCase()) {
+  //       alert(`${name} is already in contacts`);
+  //       return;
+  //     }
+  //   }
 
-    const newContact = {
-      id: nanoid(5),
-      name,
-      number,
-    };
+  //   const newContact = {
+  //     id: nanoid(5),
+  //     name,
+  //     number,
+  //   };
 
-    setContacts([newContact, ...contacts]);
-  };
+  //   setContacts([newContact, ...contacts]);
+  // };
 
   const changeFilter = event => {
     setFilter(event.currentTarget.value);
   };
 
-  const deleteContact = contactId => {
-    setContacts(
-      contacts.filter(contact => {
-        return contact.id !== contactId;
-      })
-    );
-  };
+  // const deleteContact = contactId => {
+  //   setContacts(
+  //     contacts.filter(contact => {
+  //       return contact.id !== contactId;
+  //     })
+  //   );
+  // };
 
   return (
     <div
@@ -86,7 +90,7 @@ export const App = () => {
           />
           <h1>Phonebook</h1>
         </div>
-        <FormData onFormSubmit={formSubmitHandler} />
+        <FormData />
         <h1
           style={{
             marginBottom: '10px',
@@ -94,13 +98,10 @@ export const App = () => {
         >
           📃Contacts
         </h1>
-        {contacts.length > 0 ? (
+        {user.length > 0 ? (
           <>
             <Filter filter={filter} onChange={changeFilter} />
-            <ContactsList
-              items={visibleContacts}
-              deleteContact={deleteContact}
-            />
+            <ContactsList items={user} />
           </>
         ) : (
           <p>There are no contacts</p>

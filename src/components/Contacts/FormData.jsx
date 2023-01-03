@@ -25,9 +25,8 @@ export const FormData = ({ onFormSubmit }) => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     dispatch(addContact(values));
-    onFormSubmit(values);
+    // onFormSubmit(values);
     resetForm();
   };
   return (
@@ -80,6 +79,6 @@ export const FormData = ({ onFormSubmit }) => {
   );
 };
 
-FormData.propTypes = {
-  onFormSubmit: PropTypes.func.isRequired,
-};
+// FormData.propTypes = {
+//   onFormSubmit: PropTypes.func.isRequired,
+// };
