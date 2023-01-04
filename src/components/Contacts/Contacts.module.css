@@ -54,4 +54,5 @@
 
 .contactItem {
   margin-top: 10px;
+  text-transform: capitalize;
 }
