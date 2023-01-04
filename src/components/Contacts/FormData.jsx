@@ -2,7 +2,6 @@ import { nanoid } from 'nanoid';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { GiRotaryPhone } from 'react-icons/gi';
 import { HiUserCircle, HiUserAdd } from 'react-icons/hi';
-// import PropTypes from 'prop-types';
 import css from './Contacts.module.css';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -13,7 +12,7 @@ const schema = yup.object().shape({
   number: yup.string().length(9, 'Format: xxx-xx-xx').required('❌'),
 });
 
-export const FormData = ({ onFormSubmit }) => {
+export const FormData = () => {
   const dispatch = useDispatch();
 
   const nameInputId = nanoid(5);
@@ -26,7 +25,6 @@ export const FormData = ({ onFormSubmit }) => {
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(addContact(values));
-    // onFormSubmit(values);
     resetForm();
   };
   return (
@@ -78,7 +76,3 @@ export const FormData = ({ onFormSubmit }) => {
     </Formik>
   );
 };
-
-// FormData.propTypes = {
-//   onFormSubmit: PropTypes.func.isRequired,
-// };

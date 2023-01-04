@@ -1,5 +1,5 @@
 import { ContactItem } from './ContactsItem';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const ContactsList = ({ items }) => {
   return (
@@ -13,13 +13,12 @@ const ContactsList = ({ items }) => {
 
 export default ContactsList;
 
-// ContactsList.propTypes = {
-//   items: PropTypes.arrayOf(
-//     PropTypes.exact({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     })
-//   ),
-//   deleteContact: PropTypes.func.isRequired,
-// };
+ContactsList.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+};
