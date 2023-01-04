@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { changeFilter } from 'redux/store';
+import { changeFilter } from 'redux/filterSlice/filterSlice';
 
 const filterId = nanoid(5);
 

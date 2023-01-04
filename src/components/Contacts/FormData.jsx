@@ -5,7 +5,7 @@ import { HiUserCircle, HiUserAdd } from 'react-icons/hi';
 import css from './Contacts.module.css';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/store';
+import { addContact } from 'redux/contactsSlice/contactsSlice';
 
 const schema = yup.object().shape({
   name: yup.string().min(2, 'Too short').required('❌'),
