@@ -4,13 +4,13 @@ import { Filter } from './Contacts/Filter';
 import { RiGameFill } from 'react-icons/ri';
 import css from './Contacts/Contacts.module.css';
 import { useSelector } from 'react-redux';
+import { contactsSelector, filteredContactsSelector } from 'redux/selectors';
 
 export const App = () => {
-  const contacts = useSelector(state => state.contacts.contacts);
-  const filterContacts = useSelector(state => state.filter.filter);
-
+  const contacts = useSelector(contactsSelector);
+  const filteredContacts = useSelector(filteredContactsSelector);
   const getVisibleContacts = () => {
-    const normalizedFilter = filterContacts.toLowerCase();
+    const normalizedFilter = filteredContacts.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
@@ -53,7 +53,7 @@ export const App = () => {
         </h1>
         {contacts.length > 0 ? (
           <>
-            <Filter filter={filterContacts} />
+            <Filter filter={filteredContacts} />
             <ContactsList items={visibleContacts} />
           </>
         ) : (
