@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Yevhen999.github.io/goit-react-hw-06-phonebook/",
+  "homepage": "https://Yevhen999.github.io/goit-react-hw-07-phonebook/",
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
     "@reduxjs/toolkit": "^1.9.1",
