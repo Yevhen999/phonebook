@@ -17,14 +17,14 @@ export const App = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  // const filteredContacts = useSelector(filteredContactsSelector);
-  // const getVisibleContacts = () => {
-  //   const normalizedFilter = filteredContacts.toLowerCase();
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(normalizedFilter)
-  //   );
-  // };
-  // const visibleContacts = getVisibleContacts();
+  const filteredContacts = useSelector(filteredContactsSelector);
+  const getVisibleContacts = () => {
+    const normalizedFilter = filteredContacts.toLowerCase();
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
+  };
+  const visibleContacts = getVisibleContacts();
 
   return (
     <div
@@ -64,8 +64,8 @@ export const App = () => {
         {error && <p>{error}</p>}
         {contacts.length > 0 ? (
           <>
-            {/* <Filter filter={filteredContacts} /> */}
-            <ContactsList items={contacts} />
+            <Filter filter={filteredContacts} />
+            <ContactsList items={visibleContacts} />
           </>
         ) : (
           <p>There are no contacts</p>
