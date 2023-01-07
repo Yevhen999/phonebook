@@ -4,8 +4,9 @@ import { GiRotaryPhone } from 'react-icons/gi';
 import { HiUserCircle, HiUserAdd } from 'react-icons/hi';
 import css from './Contacts.module.css';
 import * as yup from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice/contactsSlice';
+import { contactsSelector } from 'redux/selectors';
 
 const schema = yup.object().shape({
   name: yup.string().min(2, 'Too short').required('❌'),
@@ -14,6 +15,7 @@ const schema = yup.object().shape({
 
 export const FormData = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(contactsSelector);
 
   const nameInputId = nanoid(5);
   const numberInputId = nanoid(5);
@@ -24,6 +26,12 @@ export const FormData = () => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
+    for (const contact of contacts) {
+      if (contact.name.toLowerCase() === values.name.toLowerCase()) {
+        alert(`${values.name} is already in contacts`);
+        return;
+      }
+    }
     dispatch(addContact(values));
     resetForm();
   };
