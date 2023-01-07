@@ -1,6 +1,6 @@
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
-import { fetchContacts, addContact } from 'redux/operations';
+import { fetchContacts, addContact, deleteContact } from 'redux/operations';
 
 const { createSlice } = require('@reduxjs/toolkit');
 
@@ -38,43 +38,21 @@ export const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    // Виконається в момент старту HTTP-запиту
-    // fetchingInProgress(state) {
-    //   state.isLoading = true;
-    // },
-    // // Виконається якщо HTTP-запит завершився успішно
-    // fetchingSuccess(state, action) {
-    //   state.isLoading = false;
-    //   state.error = null;
-    //   state.contacts = action.payload;
-    // },
-    // // Виконається якщо HTTP-запит завершився з помилкою
-    // fetchingError(state, action) {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
-    // // fetchContacts: {},
-    // // addContacts: {},
-    // // deleteContacts: {},
-    // addContact: {
-    //   reducer(state, action) {
-    //     state.contacts.push(action.payload);
-    //   },
-    //   prepare(contact) {
-    //     return {
-    //       payload: {
-    //         name: contact.name,
-    //         number: contact.number,
-    //         id: nanoid(5),
-    //       },
-    //     };
-    //   },
-    // },
-    // deleteContact(state, action) {
-    //   state.contacts = state.contacts.filter(
-    //     contact => contact.id !== action.payload
-    //   );
-    // },
+    [deleteContact.pending](state) {
+      state.isLoading = true;
+    },
+    [deleteContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      const index = state.contacts.findIndex(
+        contact => contact.id === action.payload.id
+      );
+      state.contacts.splice(index, 1);
+    },
+    [deleteContact.rejected](state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -87,11 +65,3 @@ export const persistedContactsReducer = persistReducer(
   persistConfig,
   contactsSlice.reducer
 );
-
-export const {
-  // fetchingInProgress,
-  // fetchingSuccess,
-  // fetchingError,
-  // addContact,
-  deleteContact,
-} = contactsSlice.actions;
