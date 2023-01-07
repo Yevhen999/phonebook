@@ -3,19 +3,28 @@ import { FormData } from './Contacts/FormData';
 import { Filter } from './Contacts/Filter';
 import { RiGameFill } from 'react-icons/ri';
 import css from './Contacts/Contacts.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { contactsSelector, filteredContactsSelector } from 'redux/selectors';
+import { useEffect } from 'react';
+import { fetchContacts } from 'redux/operations';
 
 export const App = () => {
-  const contacts = useSelector(contactsSelector);
-  const filteredContacts = useSelector(filteredContactsSelector);
-  const getVisibleContacts = () => {
-    const normalizedFilter = filteredContacts.toLowerCase();
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-  };
-  const visibleContacts = getVisibleContacts();
+  const dispatch = useDispatch();
+  const { contacts, isLoading, error } = useSelector(contactsSelector);
+  // console.log(contacts);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
+  // const filteredContacts = useSelector(filteredContactsSelector);
+  // const getVisibleContacts = () => {
+  //   const normalizedFilter = filteredContacts.toLowerCase();
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
+  // const visibleContacts = getVisibleContacts();
 
   return (
     <div
@@ -51,10 +60,12 @@ export const App = () => {
         >
           📃Contacts
         </h1>
+        {isLoading && <p>Is loading...</p>}
+        {error && <p>{error}</p>}
         {contacts.length > 0 ? (
           <>
-            <Filter filter={filteredContacts} />
-            <ContactsList items={visibleContacts} />
+            {/* <Filter filter={filteredContacts} /> */}
+            <ContactsList items={contacts} />
           </>
         ) : (
           <p>There are no contacts</p>
