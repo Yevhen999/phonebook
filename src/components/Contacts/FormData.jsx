@@ -5,24 +5,24 @@ import { HiUserCircle, HiUserAdd } from 'react-icons/hi';
 import css from './Contacts.module.css';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice/contactsSlice';
+import { addContact } from 'redux/operations';
 import { contactsSelector } from 'redux/selectors';
 
 const schema = yup.object().shape({
   name: yup.string().min(2, 'Too short').required('❌'),
-  number: yup.string().length(9, 'Format: xxx-xx-xx').required('❌'),
+  phone: yup.string().length(9, 'Format: xxx-xx-xx').required('❌'),
 });
 
 export const FormData = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(contactsSelector);
+  const { contacts } = useSelector(contactsSelector);
 
   const nameInputId = nanoid(5);
   const numberInputId = nanoid(5);
 
   const initialValues = {
     name: '',
-    number: '',
+    phone: '',
   };
 
   const handleSubmit = (values, { resetForm }) => {
@@ -68,7 +68,7 @@ export const FormData = () => {
         <Field
           className={css.formInput}
           type="tel"
-          name="number"
+          name="phone"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
