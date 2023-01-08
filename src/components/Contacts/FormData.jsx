@@ -6,7 +6,7 @@ import css from './Contacts.module.css';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/operations';
-import { contactsSelector } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 
 const schema = yup.object().shape({
   name: yup.string().min(2, 'Too short').required('❌'),
@@ -15,7 +15,7 @@ const schema = yup.object().shape({
 
 export const FormData = () => {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(contactsSelector);
+  const { contacts } = useSelector(selectContacts);
 
   const nameInputId = nanoid(5);
   const numberInputId = nanoid(5);

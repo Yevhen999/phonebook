@@ -4,20 +4,20 @@ import { Filter } from './Contacts/Filter';
 import { RiGameFill } from 'react-icons/ri';
 import css from './Contacts/Contacts.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { contactsSelector, filteredContactsSelector } from 'redux/selectors';
+import { selectContacts, selectFilter } from 'redux/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/operations';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { contacts, isLoading, error } = useSelector(contactsSelector);
+  const { contacts, isLoading, error } = useSelector(selectContacts);
   // console.log(contacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const filteredContacts = useSelector(filteredContactsSelector);
+  const filteredContacts = useSelector(selectFilter);
   const getVisibleContacts = () => {
     const normalizedFilter = filteredContacts.toLowerCase();
     return contacts.filter(contact =>
