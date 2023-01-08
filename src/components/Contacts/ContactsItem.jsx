@@ -8,6 +8,7 @@ export const ContactItem = ({ id, name, phone }) => {
   const handleDelete = () => {
     dispatch(deleteContact(id));
   };
+
   return (
     <li className={css.contactItem}>
       <p className={css.contactName}>
