@@ -14,7 +14,7 @@ import { fetchContacts } from 'redux/contactsSlice/operations';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { contacts, isLoading, error } = useSelector(selectContacts);
+  const contacts = useSelector(selectContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -57,8 +57,8 @@ export const App = () => {
         >
           📃Contacts
         </h1>
-        {isLoading && <p>Is loading...</p>}
-        {error && <p>{error}</p>}
+        {/* {isLoading && <p>Is loading...</p>} */}
+        {/* {error && <p>{error}</p>} */}
         {contacts.length > 0 ? (
           <>
             <Filter filter={filteredContacts} />
