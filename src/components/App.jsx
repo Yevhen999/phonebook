@@ -10,7 +10,7 @@ import {
   selectVisibleContacts,
 } from 'redux/selectors';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contactsSlice/operations';
 
 export const App = () => {
   const dispatch = useDispatch();

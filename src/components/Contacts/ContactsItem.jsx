@@ -1,7 +1,7 @@
 import css from './Contacts.module.css';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contactsSlice/operations';
 
 export const ContactItem = ({ id, name, phone }) => {
   const dispatch = useDispatch();
