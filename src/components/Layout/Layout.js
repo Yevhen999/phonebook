@@ -12,6 +12,7 @@ import css from 'components/Contacts/Contacts.module.css';
 import { FormData } from 'components/Contacts/FormData';
 import { Filter } from 'components/Contacts/Filter';
 import ContactsList from 'components/Contacts/ContactsList';
+import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
   const dispatch = useDispatch();
@@ -59,8 +60,6 @@ const Layout = () => {
         >
           📃Contacts
         </h1>
-        {/* {isLoading && <p>Is loading...</p>} */}
-        {/* {error && <p>{error}</p>} */}
         {contacts.length > 0 ? (
           <>
             <Filter filter={filteredContacts} />
@@ -69,6 +68,7 @@ const Layout = () => {
         ) : (
           <p>There are no contacts</p>
         )}
+        <Outlet />
       </div>
     </div>
   );
