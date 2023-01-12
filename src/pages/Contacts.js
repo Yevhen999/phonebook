@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { TaskList } from 'components/TaskList/TaskList';
-import { TaskEditor } from 'components/TaskEditor/TaskEditor';
-import { fetchTasks } from 'redux/tasks/operations';
-import { selectLoading } from 'redux/tasks/selectors';
+import { fetchContacts } from 'redux/contactsSlice/operations';
+import ContactsList from 'components/Contacts/ContactsList';
+import { Filter } from 'components/Contacts/Filter';
+import { selectIsLoading } from 'redux/selectors';
 
 const Contacts = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectLoading);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
-    dispatch(fetchTasks());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
@@ -19,9 +19,9 @@ const Contacts = () => {
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
-      <TaskEditor />
+      <Filter />
       <div>{isLoading && 'Request in progress...'}</div>
-      <TaskList />
+      <ContactsList />
     </>
   );
 };
