@@ -10,7 +10,7 @@ import { selectContacts } from 'redux/selectors';
 
 const schema = yup.object().shape({
   name: yup.string().min(2, 'Too short').required('❌'),
-  phone: yup.string().length(9, 'Format: xxx-xx-xx').required('❌'),
+  number: yup.string().length(9, 'Format: xxx-xx-xx').required('❌'),
 });
 
 export const FormData = () => {
@@ -22,7 +22,7 @@ export const FormData = () => {
 
   const initialValues = {
     name: '',
-    phone: '',
+    number: '',
   };
 
   const handleSubmit = (values, { resetForm }) => {
@@ -68,7 +68,7 @@ export const FormData = () => {
         <Field
           className={css.formInput}
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required

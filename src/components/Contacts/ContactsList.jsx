@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const ContactsList = ({ items }) => {
   return (
     <ul>
-      {items.map(({ id, name, phone, createdAt }) => (
-        <ContactItem key={id} id={id} name={name} phone={phone} />
+      {items.map(({ id, name, number }) => (
+        <ContactItem key={id} id={id} name={name} number={number} />
       ))}
     </ul>
   );
@@ -18,8 +18,7 @@ ContactsList.propTypes = {
     PropTypes.exact({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
-      createdAt: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
     })
   ),
 };
