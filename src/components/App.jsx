@@ -11,6 +11,7 @@ import {
 } from 'redux/selectors';
 import { useEffect } from 'react';
 import { fetchContacts } from 'redux/contactsSlice/operations';
+import { AppBar } from './AppBar/AppBar';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ export const App = () => {
         }}
       >
         <div className={css.phonebookWrapper}>
+          <AppBar />
           <RiGameFill
             size={25}
             style={{
