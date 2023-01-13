@@ -21,15 +21,19 @@ const Layout = () => {
           backgroundColor: 'yellow',
         }}
       >
+        <h1>
+          Phonebook{' '}
+          <span>
+            <RiGameFill
+              size={25}
+              style={{
+                fill: 'tomato',
+              }}
+            />
+          </span>
+        </h1>
         <div className={css.phonebookWrapper}>
           <AppBar />
-          <RiGameFill
-            size={25}
-            style={{
-              fill: 'tomato',
-            }}
-          />
-          <h1>Phonebook</h1>
         </div>
         <Outlet />
       </div>
