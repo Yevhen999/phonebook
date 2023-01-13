@@ -2,6 +2,7 @@ import { AppBar } from 'components/AppBar/AppBar';
 import { RiGameFill } from 'react-icons/ri';
 import css from 'components/Contacts/Contacts.module.css';
 import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 
 const Layout = () => {
   return (
@@ -35,7 +36,9 @@ const Layout = () => {
         <div className={css.phonebookWrapper}>
           <AppBar />
         </div>
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   );
