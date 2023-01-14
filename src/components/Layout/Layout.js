@@ -3,44 +3,47 @@ import { RiGameFill } from 'react-icons/ri';
 import css from 'components/Contacts/Contacts.module.css';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
+import { Container } from '@mui/system';
 
 const Layout = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        height: '100%',
-        color: '#010101',
-      }}
-    >
+    <Container maxWidth="sm">
       <div
         style={{
-          border: '2px solid tomato',
-          borderRadius: '5px',
-          padding: '20px',
-          backgroundColor: 'yellow',
+          display: 'flex',
+          justifyContent: 'center',
+          height: '100%',
+          // color: '#010101',
         }}
       >
-        <h1>
-          Phonebook{' '}
-          <span>
-            <RiGameFill
-              size={25}
-              style={{
-                fill: 'tomato',
-              }}
-            />
-          </span>
-        </h1>
-        <div className={css.phonebookWrapper}>
-          <AppBar />
+        <div
+          style={{
+            border: '2px solid tomato',
+            borderRadius: '5px',
+            padding: '20px',
+            // backgroundColor: 'yellow',
+          }}
+        >
+          <h1>
+            Phonebook{' '}
+            <span>
+              <RiGameFill
+                size={25}
+                style={{
+                  fill: 'tomato',
+                }}
+              />
+            </span>
+          </h1>
+          <div className={css.phonebookWrapper}>
+            <AppBar />
+          </div>
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </div>
-        <Suspense fallback={null}>
-          <Outlet />
-        </Suspense>
       </div>
-    </div>
+    </Container>
   );
 };
 
