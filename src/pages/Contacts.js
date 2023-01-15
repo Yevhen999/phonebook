@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { fetchContacts } from 'redux/contactsSlice/operations';
 import ContactsList from 'components/Contacts/ContactsList';
-import { Filter } from 'components/Contacts/Filter';
+import { Filter } from 'components/Filter/Filter';
 import { selectIsLoading } from 'redux/selectors';
 import {
   selectContacts,
@@ -30,16 +30,8 @@ const Contacts = () => {
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
-      {/* <Filter /> */}
       <div>{isLoading && 'Request in progress...'}</div>
       <FormData />
-      <h1
-        style={{
-          marginBottom: '10px',
-        }}
-      >
-        📃Contacts
-      </h1>
       {contacts.length > 0 ? (
         <>
           <Filter filter={filteredContacts} />
