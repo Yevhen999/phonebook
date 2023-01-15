@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { fetchContacts } from 'redux/contactsSlice/operations';
-import ContactsList from 'components/Contacts/ContactsList';
+import ContactsList from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
 import { selectIsLoading } from 'redux/selectors';
 import {
@@ -10,7 +10,7 @@ import {
   selectFilter,
   selectVisibleContacts,
 } from 'redux/selectors';
-import { FormData } from 'components/Contacts/FormData';
+import { FormData } from 'components/FormData/FormData';
 
 const Contacts = () => {
   const dispatch = useDispatch();

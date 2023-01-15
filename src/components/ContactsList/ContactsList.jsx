@@ -1,13 +1,14 @@
-import { ContactItem } from './ContactsItem';
+import { ContactItem } from '../ContactsItem/ContactsItem';
 import PropTypes from 'prop-types';
+import { List } from '@mui/material';
 
 const ContactsList = ({ items }) => {
   return (
-    <ul>
+    <List>
       {items.map(({ id, name, number }) => (
         <ContactItem key={id} id={id} name={name} number={number} />
       ))}
-    </ul>
+    </List>
   );
 };
 

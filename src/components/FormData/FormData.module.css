@@ -51,21 +51,3 @@
   color: #1976d2;
   box-shadow: 3px 3px 5px grey;
 }
-
-.contactItem {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.contactName {
-  margin: 0;
-  text-transform: capitalize;
-}
-
-.btnDelete {
-  margin-left: 10px;
-  border-radius: 5px;
-  border: 3px solid tomato;
-  background-color: black;
-  color: yellow;
-}
