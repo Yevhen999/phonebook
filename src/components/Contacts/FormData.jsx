@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { GiRotaryPhone } from 'react-icons/gi';
-import { HiUserCircle, HiUserAdd } from 'react-icons/hi';
+import { Field, Form, Formik } from 'formik';
+// import { GiRotaryPhone } from 'react-icons/gi';
+import { HiUserAdd } from 'react-icons/hi';
 import css from './Contacts.module.css';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,41 +41,43 @@ export const FormData = () => {
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
-      <Form>
-        <div className={css.labelWrapper}>
-          <HiUserCircle className={css.formIcon} />
-          <label className={css.formLabel} htmlFor={nameInputId}>
+      <Form className={css.phonebookWrapper}>
+        <div className={css.labelWrapperName}>
+          {/* <HiUserCircle className={css.formIcon} /> */}
+
+          <Field
+            className={css.formInputName}
+            type="text"
+            name="name"
+            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            required
+            id={nameInputId}
+            // placeholder="John Doe"
+          />
+          <label className={css.formLabelName} htmlFor={nameInputId}>
             Name
           </label>
+          {/* <ErrorMessage name="name" /> */}
         </div>
-        <Field
-          className={css.formInputName}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          id={nameInputId}
-          placeholder="John Doe"
-        />
-        <ErrorMessage name="name" />
-        <div className={css.labelWrapper}>
-          <GiRotaryPhone className={css.formIcon} />
-          <label className={css.formLabel} htmlFor={numberInputId}>
+        <div className={css.labelWrapperNumber}>
+          {/* <GiRotaryPhone className={css.formIcon} /> */}
+
+          <Field
+            className={css.formInputNumber}
+            type="tel"
+            name="number"
+            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            required
+            id={numberInputId}
+            // placeholder="xxx-xx-xx"
+          />
+          <label className={css.formLabelNumber} htmlFor={numberInputId}>
             Number
           </label>
+          {/* <ErrorMessage name="number" /> */}
         </div>
-        <Field
-          className={css.formInput}
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          id={numberInputId}
-          placeholder="xxx-xx-xx"
-        />
-        <ErrorMessage name="number" />
         <button className={css.btnSubmit} type="submit">
           <HiUserAdd size={11} />
           Add contact

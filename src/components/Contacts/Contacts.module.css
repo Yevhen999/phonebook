@@ -1,21 +1,36 @@
-/* .phonebookWrapper {
+.phonebookWrapper {
   display: flex;
-  align-items: baseline;
-} */
+  justify-content: space-between;
+  /* align-items: baseline; */
+}
 
-.labelWrapper {
-  display: flex;
+.labelWrapperName,
+.labelWrapperNumber {
+  position: relative;
+  margin-top: 25px;
+  /* display: flex;
   align-items: center;
   gap: 3px;
-  margin-top: 10px;
+  margin-top: 10px; */
 }
 
-.formIcon {
+/* .formIcon {
   fill: tomato;
-}
+} */
 
-.formLabel {
-  display: block;
+.formLabelName,
+.formLabelNumber {
+  position: absolute;
+  top: 0.8rem;
+  left: 1rem;
+  padding: 0.05rem;
+  cursor: text;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+  /* transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  border: 2px solid blue; */
+  /* display: block; */
 }
 
 /* .formInput,
@@ -25,23 +40,38 @@
   border-radius: 3px;
 } */
 
-.formInputName {
+.formInputName,
+.formInputNumber {
   text-transform: capitalize;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* transform: translateY(-50%); */
+  /* width: 100%;
+  height: 100%; */
+  border: 2px solid blue;
+  padding: 1rem;
+  background: none;
 }
 
-.formInputName,
-.formInput {
-  padding: 10px;
+.formInputName:focus ~ .formLabelName,
+.formInputNumber:focus ~ .formLabelNumber {
+  top: 0.5rem;
+}
+/* padding: 10px;
   box-shadow: 0 0 15px 4px;
   border-radius: 10px;
   font-family: monospace;
-  /* rgba(0, 0, 0, 0.06); */
-}
+  rgba(0, 0, 0, 0.06); */
 
-.formInput:focus-within,
+/* .formInput:focus-within,
 .formInputName:focus-within {
   outline-color: tomato;
   transform: scale(1.1);
+} */
+
+.labelWrapper input {
+  border: 3px solid tomato;
 }
 
 .btnSubmit {
