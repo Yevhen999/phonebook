@@ -54,8 +54,6 @@ export const FormData = () => {
             id={nameInputId}
             placeholder="John Doe"
           />
-
-          {/* <ErrorMessage name="name" /> */}
         </div>
         <div className={css.labelWrapperNumber}>
           <label className={css.formLabelNumber} htmlFor={numberInputId}>
@@ -71,11 +69,8 @@ export const FormData = () => {
             id={numberInputId}
             placeholder="xxx-xx-xx"
           />
-
-          {/* <ErrorMessage name="number" /> */}
         </div>
         <button className={css.btnSubmit} type="submit">
-          {/* <HiUserAdd size={11} /> */}
           Add contact
         </button>
       </Form>
