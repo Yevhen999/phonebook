@@ -18,15 +18,24 @@
   display: block;
 }
 
-.formInput,
+/* .formInput,
 .formInputName {
   margin-top: 10px;
   display: block;
   border-radius: 3px;
-}
+} */
 
 .formInputName {
   text-transform: capitalize;
+}
+
+.formInputName,
+.formInput {
+  padding: 10px;
+  box-shadow: 0 0 15px 4px;
+  border-radius: 10px;
+  font-family: monospace;
+  /* rgba(0, 0, 0, 0.06); */
 }
 
 .formInput:focus-within,

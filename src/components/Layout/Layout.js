@@ -1,4 +1,4 @@
-import { AppBarr } from 'components/AppBar/AppBar';
+import { AppNav } from 'components/AppBar/AppBar';
 import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Container } from '@mui/system';
@@ -6,9 +6,11 @@ import { Container } from '@mui/system';
 const Layout = () => {
   return (
     <Container maxWidth="sm">
-      <AppBarr />
+      <AppNav />
       <Suspense fallback={null}>
-        <Outlet />
+        <Container maxWidth="xl">
+          <Outlet />
+        </Container>
       </Suspense>
     </Container>
   );

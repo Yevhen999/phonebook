@@ -9,8 +9,8 @@ import { addContact } from 'redux/contactsSlice/operations';
 import { selectContacts } from 'redux/selectors';
 
 const schema = yup.object().shape({
-  name: yup.string().min(2, 'Too short').required('❌'),
-  number: yup.string().length(9, 'Format: xxx-xx-xx').required('❌'),
+  name: yup.string().min(2, 'Too short').required(''),
+  number: yup.string().length(9, 'Format: xxx-xx-xx').required(''),
 });
 
 export const FormData = () => {
