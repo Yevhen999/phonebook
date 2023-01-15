@@ -38,7 +38,7 @@ const Contacts = () => {
           <ContactsList items={visibleContacts} />
         </>
       ) : (
-        <p>There are no contacts</p>
+        <p style={{ textAlign: 'center' }}>There are no contacts</p>
       )}
     </>
   );

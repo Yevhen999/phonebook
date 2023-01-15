@@ -2,7 +2,6 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
-// axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 // Utility to add JWT
 const setAuthHeader = token => {
