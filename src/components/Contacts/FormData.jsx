@@ -1,7 +1,5 @@
 import { nanoid } from 'nanoid';
 import { Field, Form, Formik } from 'formik';
-// import { GiRotaryPhone } from 'react-icons/gi';
-import { HiUserAdd } from 'react-icons/hi';
 import css from './Contacts.module.css';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,10 +39,11 @@ export const FormData = () => {
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
-      <Form className={css.phonebookWrapper}>
+      <Form className={css.form}>
         <div className={css.labelWrapperName}>
-          {/* <HiUserCircle className={css.formIcon} /> */}
-
+          <label className={css.formLabelName} htmlFor={nameInputId}>
+            Name
+          </label>
           <Field
             className={css.formInputName}
             type="text"
@@ -53,16 +52,15 @@ export const FormData = () => {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             id={nameInputId}
-            // placeholder="John Doe"
+            placeholder="John Doe"
           />
-          <label className={css.formLabelName} htmlFor={nameInputId}>
-            Name
-          </label>
+
           {/* <ErrorMessage name="name" /> */}
         </div>
         <div className={css.labelWrapperNumber}>
-          {/* <GiRotaryPhone className={css.formIcon} /> */}
-
+          <label className={css.formLabelNumber} htmlFor={numberInputId}>
+            Number
+          </label>
           <Field
             className={css.formInputNumber}
             type="tel"
@@ -71,15 +69,13 @@ export const FormData = () => {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             id={numberInputId}
-            // placeholder="xxx-xx-xx"
+            placeholder="xxx-xx-xx"
           />
-          <label className={css.formLabelNumber} htmlFor={numberInputId}>
-            Number
-          </label>
+
           {/* <ErrorMessage name="number" /> */}
         </div>
         <button className={css.btnSubmit} type="submit">
-          <HiUserAdd size={11} />
+          {/* <HiUserAdd size={11} /> */}
           Add contact
         </button>
       </Form>
