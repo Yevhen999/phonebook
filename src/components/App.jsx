@@ -1,4 +1,5 @@
 import { useAuth } from 'hooks';
+import NotFound from 'pages/NotFound';
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
@@ -48,6 +49,7 @@ export const App = () => {
           }
         />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
