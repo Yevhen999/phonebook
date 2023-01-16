@@ -4,7 +4,7 @@ import css from './FormData.module.css';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice/operations';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contactsSlice/selectors';
 
 const schema = yup.object().shape({
   name: yup.string().min(2, 'Too short').required(''),

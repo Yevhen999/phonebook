@@ -1,7 +1,7 @@
 import { Box, TextField } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { changeFilter } from 'redux/filterSlice/filterSlice';
+import { changeFilter } from 'redux/filterSlice/filter';
 import css from './Filter.module.css';
 
 export const Filter = ({ filter }) => {

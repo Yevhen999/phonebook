@@ -1,17 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Helmet } from 'react-helmet';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { fetchContacts } from 'redux/contactsSlice/operations';
 import ContactsList from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
-
 import {
   selectContacts,
-  selectFilter,
   selectIsLoading,
   selectVisibleContacts,
-} from 'redux/selectors';
+} from 'redux/contactsSlice/selectors';
+import { selectFilter } from 'redux/filterSlice/selectors';
 import { FormData } from 'components/FormData/FormData';
 
 const Contacts = () => {
