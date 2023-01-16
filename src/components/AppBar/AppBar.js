@@ -3,7 +3,7 @@ import { Navigation } from '../Navigation/Navigation';
 import { UserMenu } from '../UserMenu/UserMenu';
 import { AuthNav } from '../AuthNav/AuthNav';
 import { useAuth } from 'hooks/useAuth';
-import { AppBar, Container, Toolbar } from '@mui/material';
+import { AppBar, Container, Toolbar, Typography } from '@mui/material';
 import ImportContactsIcon from '@mui/icons-material/ImportContacts';
 
 export const AppNav = () => {
@@ -13,10 +13,10 @@ export const AppNav = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <ImportContactsIcon
-            sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
-          />
-          <Navigation />
+          <ImportContactsIcon sx={{ display: { md: 'flex' }, mr: 1 }} />
+          <Typography textAlign="center">
+            <Navigation />
+          </Typography>
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </Toolbar>
       </Container>
