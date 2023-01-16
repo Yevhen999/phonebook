@@ -4,13 +4,10 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { fetchContacts } from 'redux/contactsSlice/operations';
 import ContactsList from 'components/ContactsList/ContactsList';
 import { Filter } from 'components/Filter/Filter';
-import {
-  selectContacts,
-  selectIsLoading,
-  selectVisibleContacts,
-} from 'redux/contactsSlice/selectors';
+import { selectContacts, selectIsLoading } from 'redux/contactsSlice/selectors';
 import { selectFilter } from 'redux/filterSlice/selectors';
 import { FormData } from 'components/FormData/FormData';
+import { selectVisibleContacts } from 'redux/selectors';
 
 const Contacts = () => {
   const dispatch = useDispatch();
