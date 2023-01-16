@@ -1,5 +1,6 @@
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
+import { logOut } from 'redux/auth/operations';
 import {
   fetchContacts,
   addContact,
@@ -51,6 +52,11 @@ export const contactsSlice = createSlice({
           contact => contact.id === action.payload.id
         );
         state.contacts.splice(index, 1);
+      })
+      .addCase(logOut.fulfilled, state => {
+        state.contacts = [];
+        state.isLoading = false;
+        state.error = null;
       });
   },
 });
