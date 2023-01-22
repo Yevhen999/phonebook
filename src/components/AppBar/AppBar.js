@@ -14,7 +14,7 @@ export const AppNav = () => {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <ImportContactsIcon sx={{ display: { md: 'flex' }, mr: 1 }} />
-          <Typography textAlign="center">
+          <Typography flexGrow={1}>
             <Navigation />
           </Typography>
           {isLoggedIn ? <UserMenu /> : <AuthNav />}

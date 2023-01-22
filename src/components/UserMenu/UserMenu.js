@@ -1,8 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from 'hooks';
-import css from './UserMenu.module.css';
-import { IconButton } from '@mui/material';
+import { Box, IconButton, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 export const UserMenu = () => {
@@ -10,8 +9,8 @@ export const UserMenu = () => {
   const { user } = useAuth();
 
   return (
-    <div className={css.wrapper}>
-      <p className={css.username}>Welcome, {user.name}</p>
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+      <Typography sx={{ fontWeight: '700px' }}>Welcome, {user.name}</Typography>
       <IconButton
         aria-label="delete"
         size="small"
@@ -19,6 +18,6 @@ export const UserMenu = () => {
       >
         <LogoutIcon fontSize="inherit" />
       </IconButton>
-    </div>
+    </Box>
   );
 };
