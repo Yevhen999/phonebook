@@ -1,11 +1,13 @@
 import { Box, TextField } from '@mui/material';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { changeFilter } from 'redux/filterSlice/filter';
+import { useDispatch, useSelector } from 'react-redux';
 import css from './Filter.module.css';
+import { selectFilter } from 'redux/filterSlice/selectors';
+import { changeFilter } from 'redux/filterSlice/filter';
 
-export const Filter = ({ filter }) => {
+export const Filter = () => {
   const dispatch = useDispatch();
+  const filter = useSelector(selectFilter);
   const onChangeFilter = e => dispatch(changeFilter(e.target.value));
 
   return (
