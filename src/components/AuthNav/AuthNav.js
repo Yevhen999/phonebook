@@ -1,5 +1,5 @@
 import { Box, IconButton, Typography } from '@mui/material';
-import { AuthLink } from './AuthNav.styled';
+import { NavLink } from 'react-router-dom';
 
 export const AuthNav = () => {
   return (
@@ -11,16 +11,16 @@ export const AuthNav = () => {
       },    
     }}
     >
-    <AuthLink to="/register">
-      <IconButton  sx={{color: 'ButtonFace',"&:hover": { color: "black" }}}>
+    <NavLink style={{textDecoration: 'none'}} to="/register">
+      <IconButton  sx={{color: 'ButtonFace',"&:hover": { color: "lightblue" }}}>
     <Typography >Register</Typography>
     </IconButton>
-      </AuthLink>
-            <AuthLink to="/login">
-            <IconButton sx={{color: 'ButtonFace'}}>
+      </NavLink>
+            <NavLink style={{textDecoration: 'none'}} to="/login">
+            <IconButton sx={{color: 'ButtonFace',"&:hover": { color: "lightblue" }}}>
     <Typography>Log in</Typography>
   </IconButton>
-      </AuthLink>
+      </NavLink>
     </Box>
   );
 };
