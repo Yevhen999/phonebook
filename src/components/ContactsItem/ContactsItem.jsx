@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import css from './ContactsItem.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contactsSlice/operations';
 import {
@@ -20,16 +19,19 @@ export const ContactItem = ({ id, name, number }) => {
 
   return (
     <ListItem
-      className={css.listItem}
+      sx={{
+        boxShadow: '5px 5px 5px grey',
+        '&:hover': { backgroundColor: 'lightblue' },
+      }}
       secondaryAction={
         <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
-          <DeleteIcon />
+          <DeleteIcon sx={{ '&:hover': { color: 'white' } }} />
         </IconButton>
       }
     >
       <ListItemAvatar>
-        <Avatar>
-          <ContactPhoneIcon className={css.contactIcon} />
+        <Avatar sx={{ backgroundColor: 'ButtonFace' }}>
+          <ContactPhoneIcon sx={{ fill: '#1976d2' }} />
         </Avatar>
       </ListItemAvatar>
       <ListItemText primary={name} secondary={number} />
