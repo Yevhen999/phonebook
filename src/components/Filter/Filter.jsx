@@ -1,7 +1,6 @@
-import { Box, TextField } from '@mui/material';
+import { Box, TextField, Typography } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import css from './Filter.module.css';
 import { selectFilter } from 'redux/filterSlice/selectors';
 import { changeFilter } from 'redux/filterSlice/filter';
 
@@ -12,7 +11,18 @@ export const Filter = () => {
 
   return (
     <>
-      <h2 className={css.title}>Contacts</h2>
+      <Typography
+        variant="h4"
+        component="h2"
+        sx={{
+          marginBottom: 0,
+          textAlign: 'center',
+          padding: '12px 12px 0 12px',
+          fontWeight: '700',
+        }}
+      >
+        Contacts
+      </Typography>
       <Box
         component="form"
         sx={{
@@ -21,7 +31,7 @@ export const Filter = () => {
         noValidate
         autoComplete="off"
       >
-        <div className={css.textFieldWrapper}>
+        <Box sx={{ textAlign: 'center' }}>
           <TextField
             id="standard-search"
             label="Find contacts by name"
@@ -30,7 +40,7 @@ export const Filter = () => {
             value={filter}
             onChange={onChangeFilter}
           />
-        </div>
+        </Box>
       </Box>
     </>
   );
