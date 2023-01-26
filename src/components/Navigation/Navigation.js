@@ -12,7 +12,7 @@ export const Navigation = () => {
           sx={{
             color: 'ButtonFace',
             '&:hover': { color: 'lightblue' },
-            mr: '10px',
+            ml: '10px',
           }}
         >
           <Typography>Home</Typography>
@@ -21,7 +21,11 @@ export const Navigation = () => {
       {isLoggedIn && (
         <NavLink style={{ textDecoration: 'none' }} to="/contacts">
           <IconButton
-            sx={{ color: 'ButtonFace', '&:hover': { color: 'lightblue' } }}
+            sx={{
+              color: 'ButtonFace',
+              '&:hover': { color: 'lightblue' },
+              ml: '10px',
+            }}
           >
             <Typography>Contacts</Typography>
           </IconButton>

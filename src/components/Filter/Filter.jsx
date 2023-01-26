@@ -15,7 +15,8 @@ export const Filter = () => {
         variant="h4"
         component="h2"
         sx={{
-          marginBottom: 0,
+          mt: '10px',
+          mb: 0,
           textAlign: 'center',
           padding: '12px 12px 0 12px',
           fontWeight: '700',
