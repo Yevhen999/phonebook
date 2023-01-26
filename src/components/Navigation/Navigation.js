@@ -7,15 +7,24 @@ export const Navigation = () => {
 
   return (
     <>
-      <NavLink style={{textDecoration: 'none'}}  to="/">
-        <IconButton  sx={{color: 'ButtonFace',"&:hover": { color: "lightblue" }}}>
-    <Typography >Home</Typography></IconButton>
+      <NavLink style={{ textDecoration: 'none' }} to="/">
+        <IconButton
+          sx={{
+            color: 'ButtonFace',
+            '&:hover': { color: 'lightblue' },
+            mr: '10px',
+          }}
+        >
+          <Typography>Home</Typography>
+        </IconButton>
       </NavLink>
       {isLoggedIn && (
-        <NavLink style={{textDecoration: 'none'}}  to="/contacts">
-          <IconButton  sx={{color: 'ButtonFace',"&:hover": { color: "lightblue" }}}>
-    <Typography >Contacts</Typography>
-    </IconButton>
+        <NavLink style={{ textDecoration: 'none' }} to="/contacts">
+          <IconButton
+            sx={{ color: 'ButtonFace', '&:hover': { color: 'lightblue' } }}
+          >
+            <Typography>Contacts</Typography>
+          </IconButton>
         </NavLink>
       )}
     </>

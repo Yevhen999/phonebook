@@ -1,27 +1,19 @@
-import { nanoid } from 'nanoid';
-import { Field, Form, Formik } from 'formik';
-import css from './FormData.module.css';
-import * as yup from 'yup';
+import * as React from 'react';
+import { useFormik } from 'formik';
+// import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contactsSlice/operations';
 import { selectContacts } from 'redux/contactsSlice/selectors';
+import { Box, Button, TextField } from '@mui/material';
 
-const schema = yup.object().shape({
-  name: yup.string().min(2, 'Too short').required(''),
-  number: yup.string().length(9, 'Format: xxx-xx-xx').required(''),
-});
+// const schema = yup.object().shape({
+//   name: yup.string().min(2, 'Too short').required(''),
+//   number: yup.string().length(9, 'Format: xxx-xx-xx').required(''),
+// });
 
 export const FormData = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-
-  const nameInputId = nanoid(5);
-  const numberInputId = nanoid(5);
-
-  const initialValues = {
-    name: '',
-    number: '',
-  };
 
   const handleSubmit = (values, { resetForm }) => {
     for (const contact of contacts) {
@@ -33,47 +25,52 @@ export const FormData = () => {
     dispatch(addContact(values));
     resetForm();
   };
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      number: '',
+    },
+    onSubmit: handleSubmit,
+  });
+
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={schema}
+    <Box
+      component="form"
+      onSubmit={formik.handleSubmit}
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="on"
     >
-      <Form className={css.form}>
-        <div className={css.labelWrapperName}>
-          <label className={css.formLabelName} htmlFor={nameInputId}>
-            Name
-          </label>
-          <Field
-            className={css.formInputName}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-            id={nameInputId}
-            placeholder="John Doe"
-          />
-        </div>
-        <div className={css.labelWrapperNumber}>
-          <label className={css.formLabelNumber} htmlFor={numberInputId}>
-            Number
-          </label>
-          <Field
-            className={css.formInputNumber}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-            id={numberInputId}
-            placeholder="xxx-xx-xx"
-          />
-        </div>
-        <button className={css.btnSubmit} type="submit">
-          Add contact
-        </button>
-      </Form>
-    </Formik>
+      <TextField
+        value={formik.values.name}
+        type="text"
+        name="name"
+        onChange={formik.handleChange}
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+        required
+        id="outlined-basic"
+        label="name"
+        variant="outlined"
+        placeholder="John Doe"
+      />
+      <TextField
+        value={formik.values.number}
+        onChange={formik.handleChange}
+        type="tel"
+        name="number"
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        required
+        id="outlined-basic"
+        label="number"
+        variant="outlined"
+        placeholder="xxx-xx-xx"
+      />
+      <Button variant="contained">Send</Button>
+    </Box>
   );
 };
