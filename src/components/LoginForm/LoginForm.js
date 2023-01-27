@@ -20,8 +20,8 @@ export const LoginForm = () => {
   return (
     <form className={css.form} onSubmit={handleSubmit} autoComplete="on">
       <div className={css.labelWrapperEmail}>
-        <label className={css.formabelEmail}>Email</label>
-        <input className={css.formInLputEmail} type="email" name="email" />
+        <label className={css.formLabelEmail}>Email</label>
+        <input className={css.formInputEmail} type="email" name="email" />
       </div>
       <div className={css.labelWrapperPass}>
         <label className={css.formLabelPass}>Password</label>

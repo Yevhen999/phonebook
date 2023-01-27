@@ -14,14 +14,14 @@ const Home = () => {
           mb: '35px',
         }}
       >
-        <Typography variant="h3" component="h1">
-          Phonebook manager welcome page
+        <Typography variant="h4" component="h1">
+          Welcome to phonebook manager
         </Typography>
       </Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
         <NavLink style={{ textDecoration: 'none' }} to="/login">
           <Button size="large" variant="contained">
-            Get started
+            Get Started
           </Button>
         </NavLink>
       </Box>
