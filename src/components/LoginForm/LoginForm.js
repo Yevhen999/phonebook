@@ -1,6 +1,7 @@
+import { Button, TextField } from '@mui/material';
+import { Box } from '@mui/system';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import css from './LoginForm.module.css';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -18,18 +19,30 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className={css.form} onSubmit={handleSubmit} autoComplete="on">
-      <div className={css.labelWrapperEmail}>
-        <label className={css.formLabelEmail}>Email</label>
-        <input className={css.formInputEmail} type="email" name="email" />
-      </div>
-      <div className={css.labelWrapperPass}>
-        <label className={css.formLabelPass}>Password</label>
-        <input className={css.formInputPass} type="password" name="password" />
-      </div>
-      <button className={css.btnLogin} type="submit">
-        Log In
-      </button>
+    <form onSubmit={handleSubmit} autoComplete="on">
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: '20px' }}>
+        <TextField
+          id="outlined-password-input"
+          label="Email"
+          name="email"
+          type="email"
+          autoComplete="current-password"
+        />
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: '20px' }}>
+        <TextField
+          id="outlined-password-input"
+          label="Password"
+          name="password"
+          type="password"
+          autoComplete="current-password"
+        />
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: '20px' }}>
+        <Button type="submit" variant="outlined" size="large">
+          Log In
+        </Button>
+      </Box>
     </form>
   );
 };
