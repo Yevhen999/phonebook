@@ -22,7 +22,7 @@ export const LoginForm = () => {
     <form onSubmit={handleSubmit} autoComplete="on">
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: '20px' }}>
         <TextField
-          id="outlined-password-input"
+          id="outlined-email-input"
           label="Email"
           name="email"
           type="email"
