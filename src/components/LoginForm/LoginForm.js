@@ -2,12 +2,9 @@ import { Button, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import { useSnackbar } from 'notistack';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-
-  const { enqueueSnackbar } = useSnackbar();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -18,7 +15,6 @@ export const LoginForm = () => {
         password: form.elements.password.value,
       })
     );
-    enqueueSnackbar('I love snacks.');
 
     form.reset();
   };
